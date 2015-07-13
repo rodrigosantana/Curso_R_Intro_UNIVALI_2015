@@ -20,12 +20,12 @@
 
 ---
 output:
-knitrBootstrap::bootstrap_document:
-title: "Curso R Intro - UNIVALI/2015"
-theme: Journal
-highlight: Sunburst
-theme.chooser: TRUE
-highlight.chooser: TRUE
+   knitrBootstrap::bootstrap_document:
+      title: "Curso R Intro - UNIVALI/2015"
+      theme: Journal
+      highlight: Sunburst
+      theme.chooser: TRUE
+      highlight.chooser: TRUE
 ---
 
 ```{r setup, include=FALSE}
