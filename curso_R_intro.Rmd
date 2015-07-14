@@ -2,11 +2,22 @@
 output:
    knitrBootstrap::bootstrap_document:
       title: "Curso R Intro - UNIVALI/2015"
-      theme: Spacelab
-      highlight: Sunburst
+      theme: Cosmo
+      highlight: Dark
       theme.chooser: TRUE
       highlight.chooser: TRUE
 ---
+
+<!-- BOOTSTRAP THEMES -->
+<!-- Default, Amelia, Cerulean, Cosmo, Cyborg, Journal, Flatly, -->
+<!-- Readable, Simplex, Slate, Spacelab, United --> 
+
+<!-- HIGHLIGHTS -->
+<!-- HighlightJs, Dark, Far, Idea, Sunburst, Zenburn, Visual Studio, -->
+<!-- Ascetic, Magula, Github, Google Code, Brown Paper, School Book, IR -->
+<!-- Black, Solarized - Dark, Solarized - Light, Arta, Monokai, Xcode, -->
+<!-- Pojoaque, Rainbow, Tomorrow, Tomorrow Night, Tomorrow Night Bright, -->
+<!-- Tomorrow Night Blue, Tomorrow Night Eighties --> 
 
 ```{r setup, include=FALSE}
 opts_chunk$set(comment = NA,
@@ -19,7 +30,66 @@ library(knitrBootstrap)
 library(rmarkdown)
 ```
 
-### Introdução 
+# R: uma ferramenta de código aberto para análise de dados #
+
+***
+***
+
+## Introdução ##
+
+Um breve histórico sobre o *software* R
+
+1980. Linguagem S: desenvolvida por R. Becker, J. Chambers e A. Wilks
+(AT&T Bell Laboratories);  
+
+1980. Versão comercial: S-Plus (Insightful Corporation);  
+
+1996. Versão livre: R desenvolvido por R. Ihaka e R. Gentleman
+(Universidade de Auckland);  
+
+1997. R Development Core Team;  
+
+2015. 20 desenvolvedores principais e muitos outros colaboradores em
+todo o mundo;  
++ Core conta com Estatísticos, matemáticos e programadores;  
++ Colaboradores indiretos de diferentes áreas do saber.  
+
+***
+
+## O que é o R? ##
+
+1. Programa estatístico para análise de dados e produção gráfica;
+2. Uma completa linguagem de programação:
++ Interpretada (contrário de compilada);
++ Orientada a objetos;
+
+> "Tudo no R é um objeto..."
+
+3. Livre distribuição e código aberto;
+4. Mais de 6800 pacotes adicionais
+[Pacotes R](http://cran-r.c3sl.ufpr.br/web/packages/);
+5. Disponível em [http://R-project.org](http://R-project.org);
+6. Versão atual: R-3.2.1 (18-06-2015);
++ versões menores - lançamentos semestrais;
++ versões maiores - lançamentos anuais.
+
+***
+
+## Vantagens ##
+
+* É um *software* livre;  
+* Funciona em praticamente todos os sistemas operacionais existentes;
++ Linux, FreeBSD, Macintosh e Windows;  
+* É um produto de cooperação entre estatísticos do mundo todo;  
+* Linguagem lógica e intuitiva;
+* Flexibilidade nas análises estatísticas;
+* Gráficos de alta qualidade.
+
+***
+
+## Desvantagens ##
+
+
 
 ```{r}
 rnorm(10)
