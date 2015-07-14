@@ -20,8 +20,8 @@ output:
 <!-- Tomorrow Night Blue, Tomorrow Night Eighties --> 
 
 ```{r setup, include=FALSE}
-opts_chunk$set(comment = NA,
-               bootstrap.panel = TRUE)
+opts_chunk$set(bootstrap.panel = TRUE,
+               prompt = TRUE)
 ```
 
 ```{r, eval=FALSE, include=FALSE}
@@ -30,7 +30,34 @@ library(knitrBootstrap)
 library(rmarkdown)
 ```
 
+<center>
 # R: uma ferramenta de código aberto para análise de dados #
+</center>
+
+<br />
+
+<center>
+<p style="text-align:left;">
+**Rodrigo Sant'Ana**
+<span style="float:right;">
+**Fernando Mayer**
+</span>
+</p>
+
+<p style="text-align:left;">
+UNIVALI/CTTMar/GEP 
+<span style="float:right;">
+UFPR/DEST/LEG
+</span>
+</p>
+
+<p style="text-align:left;">
+rsantana@univali.br
+<span style="float:right;">
+fernandomayer@gmail.com
+</span>
+</p>
+</center>
 
 ***
 ***
@@ -51,27 +78,27 @@ Um breve histórico sobre o *software* R
 
 2015. 20 desenvolvedores principais e muitos outros colaboradores em
 todo o mundo;  
-+ Core conta com Estatísticos, matemáticos e programadores;  
-+ Colaboradores indiretos de diferentes áreas do saber.  
+	+ Core conta com Estatísticos, matemáticos e programadores;  
+	+ Colaboradores indiretos de diferentes áreas do saber.  
 
 ***
 
 ## O que é o R? ##
 
-1. Programa estatístico para análise de dados e produção gráfica;
+1. Programa estatístico para análise de dados e produção gráfica;  
 2. Uma completa linguagem de programação:
-+ Interpretada (contrário de compilada);
-+ Orientada a objetos;
+	* Interpretada (contrário de compilada);  
+	* Orientada a objetos;  
 
 > "Tudo no R é um objeto..."
 
-3. Livre distribuição e código aberto;
+3. Livre distribuição e código aberto;  
 4. Mais de 6800 pacotes adicionais
-[Pacotes R](http://cran-r.c3sl.ufpr.br/web/packages/);
-5. Disponível em [http://R-project.org](http://R-project.org);
-6. Versão atual: R-3.2.1 (18-06-2015);
-+ versões menores - lançamentos semestrais;
-+ versões maiores - lançamentos anuais.
+[Pacotes R](http://cran-r.c3sl.ufpr.br/web/packages/);  
+5. Disponível em [http://R-project.org](http://R-project.org);  
+6. Versão atual: R-3.2.1 (18-06-2015);  
+	* versões menores - lançamentos semestrais;  
+	* versões maiores - lançamentos anuais.  
 
 ***
 
@@ -79,23 +106,78 @@ todo o mundo;
 
 * É um *software* livre;  
 * Funciona em praticamente todos os sistemas operacionais existentes;
-+ Linux, FreeBSD, Macintosh e Windows;  
+	- Linux, FreeBSD, Macintosh e Windows;
 * É um produto de cooperação entre estatísticos do mundo todo;  
-* Linguagem lógica e intuitiva;
-* Flexibilidade nas análises estatísticas;
-* Gráficos de alta qualidade.
+* Linguagem lógica e intuitiva;  
+* Flexibilidade nas análises estatísticas;  
+* Gráficos de alta qualidade;  
+* Pesquisas reproduzíveis.  
 
 ***
 
 ## Desvantagens ##
 
+* Sem interface gráfica (?);  
+* Não há visualização direta dos dados;  
+* Curva de aprendizado longa;  
+* Pode ser lento com grandes bases de dados (alguns GB e/ou TB de
+  dados);  
+	  - estes casos necessitam vetorização.
 
+***
+
+## Configuração Inicial ##
+
+Passo a passo para iniciar um trabalho com R:
+
+1. Crie um diretório de trabalho onde serão armazenados os dados,
+códigos R e saídas das análises que serão realizadas nesta pesquisa;
+
+2. Utilizando o menu do RStudio, direcione o *software* para a pasta
+recentemente criada. Para isto, clique em
+
+> Session >> Set Working Directory >> Choose Directory
+
+e direcione sua escolha para pasta criada anteriormente.
+
+3. Para conferir o diretório que você está trabalhando, utilize a função
+   do R _"getwd()"_
 
 ```{r}
-rnorm(10)
+getwd()
 ```
 
+***
+
+## Visão Geral - Entendendo o R ##
+
+### Prompt de comando ou console R ###
+
+O símbolo *">"* indica que o R está pronto para receber um novo
+comando. _Ready to work!!_
+
+O símbolo no prompt de comando (ou console) do R muda de ">" para "+"
+para indicar ao usuário que o comando enviado está incompleto.
+
+Teste em seu computador os seguintes comandos abaixo:
+
 ```{r}
-plot(rnorm(10))
+## Somando escalares...
+2 + 2
+
+## Múltiplicando escalares...
+2 *
+    2
+
+## Dividindo escalares...
+2 /                                      2
 ```
+
+Notem que os espaços entre os números não fazem diferença para o R.
+
+***
+
+### Editor de scripts ###
+
+
 
