@@ -21,7 +21,8 @@ output:
 
 ```{r setup, include=FALSE}
 opts_chunk$set(bootstrap.panel = TRUE,
-               prompt = TRUE)
+               prompt = TRUE,
+               comment = NA)
 ```
 
 ```{r, eval=FALSE, include=FALSE}
@@ -159,6 +160,8 @@ comando. _Ready to work!!_
 O símbolo no prompt de comando (ou console) do R muda de ">" para "+"
 para indicar ao usuário que o comando enviado está incompleto.
 
+![](imgs/Ruindows.png)
+
 Teste em seu computador os seguintes comandos abaixo:
 
 ```{r}
@@ -179,5 +182,154 @@ Notem que os espaços entre os números não fazem diferença para o R.
 
 ### Editor de scripts ###
 
+* Utilizado para criar rotinas computacionais de análises;
+* Para acessar o editor de scripts do RStudio navegue pelo menu da
+aplicação, clicando em:
 
+> Arquivo >> Novo script.
+
+nomeie conforme desejado e salve o script com a extensão .R;
+
+* Para envio rápido dos comandos digitados no "Editor de script" do
+RStudio diretamente para o "Console" do R é possível utilizar o atalho
+Ctrl + R;
+
+* Para adicionar comentários/anotações ao script que não fazem parte dos
+  comandos utilizados nas análises, utiliza-se o símbolo "#" antes do
+  texto desejado. O que estiver depois do símbolo não será interpretado
+  pelo R. Portanto:
+
+```{r}
+2 + 2 ### Esta linha será executada, porém o comentário não.
+## 2 + 2 Esta linha será totalmente ignorada pelo R.
+```
+***
+
+### Mecanismos de ajuda no R ###
+
+Memorizar todos os comandos do R é praticamente impossível. Para
+auxiliar nesta tarefa, o R possui uma estrutura completa de pesquisa
+sobre temas correlatos às funções existentes em seus pacotes. 
+
+A função "help.search()" ajuda o usuário na busca por um determinado
+tema de interesse dentro da base do R ou em um pacote adicional
+específico. Trata-se de uma pesquisa às bases de documentos do R através
+de uma pesquisa por palavra-chave (*em inglês*).
+
+```{r, eval=FALSE}
+### Pesquisa utilizando a função completa
+help.search("linear models")
+
+### Pesquisa utilizando a função resumida
+??"linear models"
+```
+
+Ou ainda, podemos pesquisar sobre uma função ou comando de nome
+conhecido, através da função "help()" presente no *software* R.
+
+```{r, eval=FALSE}
+### Pesquisa utilizando a função completa
+help(mean)
+
+### Pesquisa utilizando a função resumida
+?mean
+```
+Outras formas de pesquisa no R, que podem auxiliar bastante no dia-a-dia
+são:
+
+1. Ajuda através do navegador (contendo também os manuais dos pacotes e
+funções);
+
+```{r, eval=FALSE}
+help.start()
+```
+
+2. Busca por tema ou palavra nos arquivos da lista de discussão do R na
+World Wide Web.
+
+```{r, eval=FALSE}
+RSiteSearch("linear models")
+```
+
+***
+
+## Orientação a objetos no R ##
+
+O que é um objeto no R?
+
+* Um *símbolo* ou uma *variável* capaz de armazenar qualquer valor ou
+estrutura de dados no R.
+
+Por quê objetos?
+
+* Uma maneira simples de acessar os dados armazenados na memória da CPU
+(o R não permite acesso direto à memória).
+
+Estrutura de programação no R:
+
+* Objetos -> Classes -> Métodos
+
+> "Tudo no R é um objeto."
+
+> "Todo objeto no R tem uma classe"
+
+_Classe_ é a definição de um objeto. Descreve a forma do objeto e como
+ele será manipulado pelas diferentes funções do R.
+
+_Método_ são funções genéricas que executam suas tarefas de acordo com
+a classe de cada objeto.
+
+```{r}
+### Atribuindo um valor ao objeto "x". x recebe o valor 2.
+x <- 2
+
+### Realizando uma operação de adição entre o objeto x e o escalar 2.
+x + 2
+
+### Qual o valor de x?
+x
+```
+
+### Nomeando os objetos no R ###
+
+Dicas e considerações importantes para nomenclatura de objetos no R:
+
+* Os objetos podem ser formados por letras, números e ".", "_", "-";
+* Não podem iniciar com números e/ou ".", "_", "-";
+* Não podem conter espaços;
+* Evite, ao máximo, utilizar acentos;
+* Evite também o uso de nomes de funções do R, tais como:
+	c q t C D F I T diff df data var pt
+* O R é case-sensitive, portanto: <br />
+	*dados* $\neq$ *Dados* $\neq$ *DADOS*
+
+**Prática com R**
+
+1. Crie um objeto de nome *x* no R e armazene neste o resultado da
+   seguinte equação: 32 + 16^2 - 25^3;
+
+Importante:
+
+Operador   | Significado
+-----------|------------
++          | adição
+-          | subtração
+*          | multiplicação
+/          | divisão
+^          | potência
+exp()      | exponencial
+sqrt()     | raíz quadrada
+factorial()| fatorial
+log()      | logaritmo
+
+2. Divida *x* por 345 e armazene este novo resultado em um novo objeto
+chamado *y*.
+
+***
+
+## Carregando dados no R ##
+
+
+
+***
 

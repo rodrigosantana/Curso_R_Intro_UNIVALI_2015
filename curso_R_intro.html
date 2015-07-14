@@ -985,58 +985,317 @@ rsantana@univali.br <span style="float:right;"> fernandomayer@gmail.com </span>
 <li>Para conferir o diretório que você está trabalhando, utilize a função do R <em>&quot;getwd()&quot;</em></li>
 </ol>
 <div class="row">
-<button class="source R toggle btn btn-xs btn-primary">
+<div class="panel panel-primary">
+<div class="source R panel-heading toggle">
+<h5 class="panel-title">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
-</button>
+</h5>
+</div>
 <pre style=""><code class="source r">getwd()</code></pre>
-<button class="output R toggle btn btn-xs btn-success">
+</div>
+<div class="panel panel-success">
+<div class="output R panel-heading toggle">
+<h5 class="panel-title">
 <span class="glyphicon glyphicon-chevron-down"></span> R output
-</button>
-<pre style=""><code class="output r">## [1] "/media/Backup/Dropbox/Cursos/Ministrados/Curso_R_Intro_UNIVALI_2015"
+</h5>
+</div>
+<pre style=""><code class="output r">[1] "/media/Backup/Dropbox/Cursos/Ministrados/Curso_R_Intro_UNIVALI_2015"
 </code></pre>
+</div>
 </div>
 <hr />
 <h2 id="visão-geral---entendendo-o-r">Visão Geral - Entendendo o R</h2>
 <h3 id="prompt-de-comando-ou-console-r">Prompt de comando ou console R</h3>
 <p>O símbolo <em>&quot;&gt;&quot;</em> indica que o R está pronto para receber um novo comando. <em>Ready to work!!</em></p>
 <p>O símbolo no prompt de comando (ou console) do R muda de &quot;&gt;&quot; para &quot;+&quot; para indicar ao usuário que o comando enviado está incompleto.</p>
+<p><img src="imgs/Ruindows.png" alt="" /></p>
 <p>Teste em seu computador os seguintes comandos abaixo:</p>
 <div class="row">
-<button class="source R toggle btn btn-xs btn-primary">
+<div class="panel panel-primary">
+<div class="source R panel-heading toggle">
+<h5 class="panel-title">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
-</button>
+</h5>
+</div>
 <pre style=""><code class="source r">## Somando escalares...
 2 + 2</code></pre>
-<button class="output R toggle btn btn-xs btn-success">
+</div>
+<div class="panel panel-success">
+<div class="output R panel-heading toggle">
+<h5 class="panel-title">
 <span class="glyphicon glyphicon-chevron-down"></span> R output
-</button>
-<pre style=""><code class="output r">## [1] 4
+</h5>
+</div>
+<pre style=""><code class="output r">[1] 4
 </code></pre>
-<button class="source R toggle btn btn-xs btn-primary">
+</div>
+<div class="panel panel-primary">
+<div class="source R panel-heading toggle">
+<h5 class="panel-title">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
-</button>
+</h5>
+</div>
 <pre style=""><code class="source r">## Múltiplicando escalares...
 2 *
     2</code></pre>
-<button class="output R toggle btn btn-xs btn-success">
+</div>
+<div class="panel panel-success">
+<div class="output R panel-heading toggle">
+<h5 class="panel-title">
 <span class="glyphicon glyphicon-chevron-down"></span> R output
-</button>
-<pre style=""><code class="output r">## [1] 4
+</h5>
+</div>
+<pre style=""><code class="output r">[1] 4
 </code></pre>
-<button class="source R toggle btn btn-xs btn-primary">
+</div>
+<div class="panel panel-primary">
+<div class="source R panel-heading toggle">
+<h5 class="panel-title">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
-</button>
+</h5>
+</div>
 <pre style=""><code class="source r">## Dividindo escalares...
 2 /                                      2</code></pre>
-<button class="output R toggle btn btn-xs btn-success">
+</div>
+<div class="panel panel-success">
+<div class="output R panel-heading toggle">
+<h5 class="panel-title">
 <span class="glyphicon glyphicon-chevron-down"></span> R output
-</button>
-<pre style=""><code class="output r">## [1] 1
+</h5>
+</div>
+<pre style=""><code class="output r">[1] 1
 </code></pre>
+</div>
 </div>
 <p>Notem que os espaços entre os números não fazem diferença para o R.</p>
 <hr />
 <h3 id="editor-de-scripts">Editor de scripts</h3>
+<ul>
+<li>Utilizado para criar rotinas computacionais de análises;</li>
+<li>Para acessar o editor de scripts do RStudio navegue pelo menu da aplicação, clicando em:</li>
+</ul>
+<blockquote>
+<p>Arquivo &gt;&gt; Novo script.</p>
+</blockquote>
+<p>nomeie conforme desejado e salve o script com a extensão .R;</p>
+<ul>
+<li><p>Para envio rápido dos comandos digitados no &quot;Editor de script&quot; do RStudio diretamente para o &quot;Console&quot; do R é possível utilizar o atalho Ctrl + R;</p></li>
+<li><p>Para adicionar comentários/anotações ao script que não fazem parte dos comandos utilizados nas análises, utiliza-se o símbolo &quot;#&quot; antes do texto desejado. O que estiver depois do símbolo não será interpretado pelo R. Portanto:</p></li>
+</ul>
+<div class="row">
+<div class="panel panel-primary">
+<div class="source R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</h5>
+</div>
+<pre style=""><code class="source r">2 + 2 ### Esta linha será executada, porém o comentário não.</code></pre>
+</div>
+<div class="panel panel-success">
+<div class="output R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</h5>
+</div>
+<pre style=""><code class="output r">[1] 4
+</code></pre>
+</div>
+<div class="panel panel-primary">
+<div class="source R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</h5>
+</div>
+<pre style=""><code class="source r">## 2 + 2 Esta linha será totalmente ignorada pelo R.</code></pre>
+</div>
+</div>
+<hr />
+<h3 id="mecanismos-de-ajuda-no-r">Mecanismos de ajuda no R</h3>
+<p>Memorizar todos os comandos do R é praticamente impossível. Para auxiliar nesta tarefa, o R possui uma estrutura completa de pesquisa sobre temas correlatos às funções existentes em seus pacotes.</p>
+<p>A função &quot;help.search()&quot; ajuda o usuário na busca por um determinado tema de interesse dentro da base do R ou em um pacote adicional específico. Trata-se de uma pesquisa às bases de documentos do R através de uma pesquisa por palavra-chave (<em>em inglês</em>).</p>
+<div class="row">
+<div class="panel panel-primary">
+<div class="source R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</h5>
+</div>
+<pre style=""><code class="source r">### Pesquisa utilizando a função completa
+help.search("linear models")
+
+### Pesquisa utilizando a função resumida
+??"linear models"</code></pre>
+</div>
+</div>
+<p>Ou ainda, podemos pesquisar sobre uma função ou comando de nome conhecido, através da função &quot;help()&quot; presente no <em>software</em> R.</p>
+<div class="row">
+<div class="panel panel-primary">
+<div class="source R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</h5>
+</div>
+<pre style=""><code class="source r">### Pesquisa utilizando a função completa
+help(mean)
+
+### Pesquisa utilizando a função resumida
+?mean</code></pre>
+</div>
+</div>
+<p>Outras formas de pesquisa no R, que podem auxiliar bastante no dia-a-dia são:</p>
+<ol style="list-style-type: decimal">
+<li>Ajuda através do navegador (contendo também os manuais dos pacotes e funções);</li>
+</ol>
+<div class="row">
+<div class="panel panel-primary">
+<div class="source R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</h5>
+</div>
+<pre style=""><code class="source r">help.start()</code></pre>
+</div>
+</div>
+<ol start="2" style="list-style-type: decimal">
+<li>Busca por tema ou palavra nos arquivos da lista de discussão do R na World Wide Web.</li>
+</ol>
+<div class="row">
+<div class="panel panel-primary">
+<div class="source R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</h5>
+</div>
+<pre style=""><code class="source r">RSiteSearch("linear models")</code></pre>
+</div>
+</div>
+<hr />
+<h2 id="orientação-a-objetos-no-r">Orientação a objetos no R</h2>
+<p>O que é um objeto no R?</p>
+<ul>
+<li>Um <em>símbolo</em> ou uma <em>variável</em> capaz de armazenar qualquer valor ou estrutura de dados no R.</li>
+</ul>
+<p>Por quê objetos?</p>
+<ul>
+<li>Uma maneira simples de acessar os dados armazenados na memória da CPU (o R não permite acesso direto à memória).</li>
+</ul>
+<p>Estrutura de programação no R:</p>
+<ul>
+<li>Objetos -&gt; Classes -&gt; Métodos</li>
+</ul>
+<blockquote>
+<p>&quot;Tudo no R é um objeto.&quot;</p>
+</blockquote>
+<blockquote>
+<p>&quot;Todo objeto no R tem uma classe&quot;</p>
+</blockquote>
+<p><em>Classe</em> é a definição de um objeto. Descreve a forma do objeto e como ele será manipulado pelas diferentes funções do R.</p>
+<p><em>Método</em> são funções genéricas que executam suas tarefas de acordo com a classe de cada objeto.</p>
+<div class="row">
+<div class="panel panel-primary">
+<div class="source R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</h5>
+</div>
+<pre style=""><code class="source r">### Atribuindo um valor ao objeto "x". x recebe o valor 2.
+x <- 2
+
+### Realizando uma operação de adição entre o objeto x e o escalar 2.
+x + 2</code></pre>
+</div>
+<div class="panel panel-success">
+<div class="output R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</h5>
+</div>
+<pre style=""><code class="output r">[1] 4
+</code></pre>
+</div>
+<div class="panel panel-primary">
+<div class="source R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</h5>
+</div>
+<pre style=""><code class="source r">### Qual o valor de x?
+x</code></pre>
+</div>
+<div class="panel panel-success">
+<div class="output R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</h5>
+</div>
+<pre style=""><code class="output r">[1] 2
+</code></pre>
+</div>
+</div>
+<h3 id="nomeando-os-objetos-no-r">Nomeando os objetos no R</h3>
+<p>Dicas e considerações importantes para nomenclatura de objetos no R:</p>
+<ul>
+<li>Os objetos podem ser formados por letras, números e &quot;.&quot;, &quot;_&quot;, &quot;-&quot;;</li>
+<li>Não podem iniciar com números e/ou &quot;.&quot;, &quot;_&quot;, &quot;-&quot;;</li>
+<li>Não podem conter espaços;</li>
+<li>Evite, ao máximo, utilizar acentos;</li>
+<li>Evite também o uso de nomes de funções do R, tais como: c q t C D F I T diff df data var pt</li>
+<li>O R é case-sensitive, portanto: <br /> <em>dados</em> <span class="math inline"> ≠ </span> <em>Dados</em> <span class="math inline"> ≠ </span> <em>DADOS</em></li>
+</ul>
+<p><strong>Prática com R</strong></p>
+<ol style="list-style-type: decimal">
+<li>Crie um objeto no R que irá armazenar o resultado da seguinte equação: 32 + 16^2 - 25^3;</li>
+</ol>
+<p>Importante:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Operador</th>
+<th align="left">Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">+</td>
+<td align="left">adição</td>
+</tr>
+<tr class="even">
+<td align="left">-</td>
+<td align="left">subtração</td>
+</tr>
+<tr class="odd">
+<td align="left">*</td>
+<td align="left">multiplicação</td>
+</tr>
+<tr class="even">
+<td align="left">/</td>
+<td align="left">divisão</td>
+</tr>
+<tr class="odd">
+<td align="left">^</td>
+<td align="left">potência</td>
+</tr>
+<tr class="even">
+<td align="left">exp()</td>
+<td align="left">exponencial</td>
+</tr>
+<tr class="odd">
+<td align="left">sqrt()</td>
+<td align="left">raíz quadrada</td>
+</tr>
+<tr class="even">
+<td align="left">factorial()</td>
+<td align="left">fatorial</td>
+</tr>
+<tr class="odd">
+<td align="left">log()</td>
+<td align="left">logaritmo</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="carregando-dados-no-r">Carregando dados no R</h2>
+<hr />
 </div>
 </div>
 <div class="navbar navbar-fixed-bottom navbar-inverse">
@@ -1052,6 +1311,34 @@ rsantana@univali.br <span style="float:right;"> fernandomayer@gmail.com </span>
 <p class="navbar-text">
 Toggle
 </p>
+</li>
+<li class="dropup">
+<a href="#" class="dropdown-toggle" data-toggle="dropdown">Code <b class="caret"></b></a>
+<ul class="dropdown-menu">
+<li class="dropdown-header">
+Languages
+</li>
+<li class="active">
+<a href="#" class="toggle-global source R" type="source.R">R</a>
+</li>
+<li>
+<a href="#" type="all-source" class="toggle-global">All</a>
+</li>
+</ul>
+</li>
+<li class="dropup">
+<a href="#" class="dropdown-toggle" data-toggle="dropdown">Output <b class="caret"></b></a>
+<ul class="dropdown-menu">
+<li class="dropdown-header">
+Type
+</li>
+<li class="active">
+<a href="#" class="toggle-global output" type="output">output</a>
+</li>
+<li>
+<a href="#" type="all-output" class="toggle-global">All</a>
+</li>
+</ul>
 </li>
 <li class="active">
 <a href="#" type="figure" class="toggle-global">Figures</a>
