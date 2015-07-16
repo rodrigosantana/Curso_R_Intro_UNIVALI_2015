@@ -1,0 +1,402 @@
+#########################################################################
+### Script com análises espaciais, SIG e Geoestatística - Demonstração ##
+### de uso de algumas funções para análise de dados espaciais!         ##
+#########################################################################
+
+### IMPORTANTE: Adaptar o script para utiliza no Knitr para montar a
+### apresentação...
+
+## Carregando os pacotes necessários para as análises!!
+
+require(geoR)         ## Pacote para implementação de análises espaciais
+require(maptools)     ## Funções para importação/exportação e manipulação
+                      ## de mapas e dados geográficos
+require(maps)         ## Pacote que permite o plot de mapas no R
+require(mapdata)      ## Pacote com base de mapas em alta-resolução
+require(raster)       ## Pacote para manipulação de arquivos raster
+
+gpclibPermit()        ## Função para habilitar licença de uso
+require(sp)           ## Pacote para representação de dados espaciais
+                      ## no R
+require(splancs)      ## Pacote para manipulação de dados espaciais
+require(spdep)        ## Funções análises de dados de áreas
+require(RColorBrewer) ## Pacote de paleta de cores do R
+
+###################################################################
+## Exemplo Paraná - Carregando shapefiles e visualizando algumas
+## informações
+###################################################################
+
+## Habilitando/carregando o shapefile dos municipios do Paraná!
+MUNICIPIOS <- shapefile("./Espacial-Data/PR/41mu2500g")
+
+## Informando que o arquivos .shp é um shapefile de poligonos!
+MUNICIPIOS <- readShapePoly("./Espacial-Data/PR/41mu2500g.shp")
+
+## Observando a classe do objeto "MUNICIPIOS"
+class(MUNICIPIOS)
+
+## Observando os nomes dos compartimentos ou slots de dados existentes
+slotNames(MUNICIPIOS)
+
+## Visualizando os dados disponibilizados no shapefile de municipios
+head(MUNICIPIOS@data)
+
+## Visualizando as informações dos poligonos existentes dentro do
+## shapefile de municipios do Paraná
+
+## Classe do slot "polygons"
+class(MUNICIPIOS@polygons)
+
+## Quais os nomes das colunas do slot de "polygons"
+names(MUNICIPIOS@polygons)
+
+## Comprimento do slot polygons - Neste caso representa o número de
+## municipios do Estado do Paraná
+length(MUNICIPIOS@polygons)
+
+## Classe do primeiro poligono presente no objeto municípios (Primeiro
+## Municipio)
+class(MUNICIPIOS@polygons[[1]])
+
+## Cada polygon (Municipio) tem suas informações específicas -
+## Visualizando os nomes dos Slots presentes no primeiro municipio do
+## objeto MUNICIPIOS
+slotNames(MUNICIPIOS@polygons[[1]])
+
+## Comprimento do slot do primeiro polygon - Primeiro municipio presente
+## no objeto MUNICIPIOS
+length(MUNICIPIOS@polygons[[1]]@Polygons)
+
+## Classe das informações contidas dentro slot Polygons - que esta
+## inserido dentro do primeiro slot de municipio presente dentro do
+## objeto MUNICIPIOS
+class(MUNICIPIOS@polygons[[1]]@Polygons)
+
+## Nome dos slots do poligono de Município onde constam as informações
+## do centroíde do município [[1]], area e coordenandas das bordas do
+## município
+slotNames(MUNICIPIOS@polygons[[1]]@Polygons[[1]])
+
+## Centroíde do poligono do primeiro municipio do objeto MUNICIPIOS
+MUNICIPIOS@polygons[[1]]@Polygons[[1]]@labpt
+
+## Pegando os centroides de todos os municipios
+centroides <- t(sapply(MUNICIPIOS@polygons, function(x) x@Polygons[[1]]@labpt))
+head(centroides)
+dim(centroides)
+
+## Lendo os dados de produção de soja
+prm <- read.table("./Espacial-Data/PR/prodsoja.txt", head = TRUE)
+dim(prm)
+head(prm)
+class(prm)
+
+## Combinando os dados do objeto MUNICIPIOS com os dados de produção de
+## soja para o estado do PARANA, porém com opções para manter a ordem
+## do objeto espacial (centroides): o objeto espacial deve vir primeiro
+## e sort = FALSE evita reordenar perdendo a ordem correta das
+## geometrias do objeto espacial
+prodm <- merge(MUNICIPIOS@data, prm, by = "CODIGO", sort = FALSE)
+dim(prodm)
+head(prodm)
+class(prodm)
+
+## Criando um novo objeto espacial que receberá os dados do shapefile
+## (objeto) MUNICIPIOS + os dados de produção de soja para o estado do
+## PARANA
+parana <- MUNICIPIOS
+parana@data <- prodm
+
+class(parana)
+head(parana@data)
+
+## Mapa da produção de soja por municipio - PARANA
+col <- rev(palette(heat.colors(31)))
+
+spplot(parana, "Prodsoja", scales = list(draw = TRUE),
+       xlab = "Longitude", ylab = "Latitude", col.regions = col)
+
+
+##################################################################
+## Convertendo a base de dados para o formato "geodata""
+
+geoprodm <- as.geodata(prodm, coords.col = c(10, 9), data.col = 12)
+class(geoprodm)
+
+attach(geoprodm)
+summary(geoprodm)
+plot(geoprodm, low=T)
+points(geoprodm, pt.div = "quintile", xlab = "Longitude", ylab = "Latitude")
+
+## Agora adicionando as bordas do estado do Paraná
+ESTADO <- shapefile("./Espacial-Data/PR/41uf2500g")
+
+ESTADO <- readShapePoly("./Espacial-Data/PR/41uf2500g.shp")
+
+plot(ESTADO)
+
+## Onde estao as coordenadas das bordas??
+class(ESTADO)
+slotNames(ESTADO) ## retorna ao conjunto de informações sobre os nomes
+                  ## individuais de um objeto.
+
+## Como o shapefile de Estado só possui informações sobre o Estado do
+## Paraná, temos uma única linha de informações armazenadas para os
+## dados deste objeto
+ESTADO@data
+
+## Centroide do poligono
+ESTADO@polygons[[1]]@Polygons[[1]]@labpt
+
+## Area do poligono
+ESTADO@polygons[[1]]@Polygons[[1]]@area
+
+## Coordenadas do polygono
+ESTADO@polygons[[1]]@Polygons[[1]]@coords
+
+## Colocando no objeto geodata as bordas do estado do Paraná e plotando
+## novamente a produção de soja do estado
+geoprodm$borders <- ESTADO@polygons[[1]]@Polygons[[1]]@coords
+plot(geoprodm, low = TRUE)
+
+dev.new()
+points(geoprodm, pt.div = "quintile", xlab = "Longitude",
+       ylab = "Latitude")
+
+## Poligono de seleção de uma parte dos dados
+poligono <- getpoly()
+dev.off()
+
+## Chamando novamente o Mapa de distribuição de produção de soja no
+## Paraná e o poligono de seleção!
+points(geoprodm, pt.div = "quintile", xlab = "Longitude",
+       ylab = "Latitude")
+polygon(poligono, lwd = 2)
+
+## Selecionando somente os dados que estão dentro do poligono!
+in.area <- inout(geoprodm$coords, poligono)
+
+## Visualizando os pontos selecionados
+pointmap(as.points(geoprodm$coords[in.area,1],
+                   geoprodm$coords[in.area,2]), col = "black")
+polygon(poligono, lwd = 2)
+
+## Criando um objeto geodata somente com a seleção dos dados
+temp <- data.frame(x = geoprodm$coords[,1], y = geoprodm$coords[,2],
+                   data = geoprodm$data)
+temp <- temp[in.area,]
+
+in.area <- as.geodata(temp, coords.col = 1:2, data.col = 3)
+in.area$borders <- poligono
+
+## Visualizando os dados dentro do poligono de seleção
+points(in.area, pt.div = "quintile", xlab = "Longitude",
+       ylab = "Latitude")
+
+## Modelando a correlação espacial da produção de soja no estado do
+## Paraná - Dados sem correlação espacial.
+
+## Observando o variograma empirico dos dados de produção de soja para
+## todo o Paraná
+summary(geoprodm)
+
+variofit <- variog(geoprodm, trend = "cte", uvec = seq(0, 6, 0.15))
+variofit4 <- variog4(geoprodm, trend = "cte", uvec = seq(0, 6, 0.15))
+plot(variofit)
+
+## Estimando os parâmetros da função de correlação espacial à olho
+eye <- eyefit(variofit)
+
+mod1 <- likfit(geoprodm, trend = "cte", ini.cov.pars = eye,
+               cov.model = "mat", nospatial = TRUE)
+
+## Graficando os dados em função do ajuste - Modelo com efeito pepita
+## puro - sem correlação espacial
+plot(variofit)
+lines(mod1, col = "green", lwd = 2)
+
+## Criando um grid para predição dos dados!!
+gr <- expand.grid(geoprodm$coords[,1], geoprodm$coords[,2])
+names(gr) <- c("x", "y")
+gr2 <- inout(gr, geoprodm$borders)
+gr <- gr[gr2,]
+
+## Krigagem ordinária com média fixa baseando-se no modelo ajustado por
+## verossimilhança
+kc <- krige.conv(geoprodm, loc = gr,
+                 krige = krige.control(obj.model = mod1))
+
+## Criando um novo objeto com os dados da krigagem (Grid, Valores
+## Preditos e Variância por ponto)
+pred <- data.frame(cbind(gr, kc$predict, kc$krige.var))
+
+## Plot dos valores preditos!
+levelplot(kc.predict ~ x*y, data = pred, aspect = "iso",
+          col.regions = terrain.colors(21),
+          xlab = expression(paste("Longitude ", "(", degree, ")")),
+          ylab = expression(paste("Latitude", "(", degree, ")")),
+          xlim = c(-56, -47), ylim = c(-22, -27),
+          panel = function(x, ...){
+              panel.levelplot(x, ...)
+              #panel.lines(geoprodm$borders[,1], geoprodm$borders[,2],
+              #            col = "black", lwd = 2)
+              panel.polygon(geoprodm$borders, col = NA, col.line =
+                            "black")
+          })
+
+## Modelando a precipitação no estado do Paraná - Dados com correlação
+## espacial. Fonte: Diggle and Ribeiro (2001)
+data(parana)
+
+## Pontos de concentração de precipitação
+points(parana)
+points(parana, pt.div = "quintile", xlab = "L - O", ylab = "N - S")
+
+## Verificando as dependências espaciais e a distribuição dos dados com
+## média constante
+plot(parana, low = TRUE)
+
+## Verificando as dependências espaciais e a distribuição dos dados com
+## média descrita por um polinomio de primeira ordem
+plot(parana, trend = "1st", low = TRUE)
+
+## Variograma empirico ajustado com média descrita por um polinomio de
+## primeiro grau
+vp <- variog(parana, trend = "1st")
+plot(vp)
+
+## Ajustando os parâmetros do modelo de correlação espacial a olho
+efp <- eyefit(vp)
+efp
+
+## Ajustando os parâmetros do modelo de correlação espacial
+## iterativamente por Verossimilhança e utilizando os parâmetros do
+## eyefit como chutes iniciais
+mlp <- likfit(parana, trend = "1st", ini = efp)
+mlp
+
+## Graficando os dados em função do ajuste
+plot(vp)
+lines(mlp, col = "green", lwd = 2)
+
+## Grid para predição dos dados
+grp <- pred_grid(parana$borders, by = 10)
+names(grp) <- c("x", "y")
+grp2 <- inout(grp, parana$borders)
+grp <- grp[grp2,]
+
+## Krigagem ordinária com média descrita por um polinomio de primeiro
+## grau
+kcp <- krige.conv(parana, loc = grp, krige = krige.control(obj = mlp))
+
+## Criando um novo objeto com os dados da krigagem (Grid, Valores
+## Preditos e Variância por ponto)
+pred2 <- data.frame(cbind(grp, kcp$predict, kcp$krige.var))
+
+## Plot dos valores preditos!
+levelplot(kcp.predict ~ x*y, data = pred2, aspect = "iso",
+          col.regions = terrain.colors(21),
+          xlab = "Km", ylab = "Km",
+          xlim = c(50, 900), ylim = c(0, 600),
+          panel = function(x, ...){
+              panel.levelplot(x, ...)
+              panel.polygon(parana$borders, col = NA, col.line =
+                            "black")
+          })
+
+## Plot das variâncias do modelo!
+levelplot(kcp.krige.var ~ x*y, data = pred2, aspect = "iso",
+          col.regions = terrain.colors(21),
+          xlab = "Km", ylab = "Km",
+          xlim = c(50, 900), ylim = c(0, 600),
+          panel = function(x, ...){
+              panel.levelplot(x, ...)
+              panel.polygon(parana$borders, col = NA, col.line =
+                            "black")
+          })
+
+#####################################################################
+## Trabalhando com arquivos raster no R
+
+require(raster)
+require(rasterVis)
+require(colorspace)
+
+## Carregando a imagem TIFF com dados de Clorofila nos oceanos -
+## Database NASA
+clo <- raster("./Espacial-Data/RASTER/1553013rgb-167772161.0.TIFF")
+
+## Selecionando apenas uma porção do Oceano Atlântico
+ext <- c(-75, 25, -60, 50)
+clo2 <- crop(clo, ext)
+
+## Criando um Tema de cor para o raster
+colTheme <- rasterTheme(pch = 19, cex = 0.7,
+                        region = brewer.pal(9, "Greens"))
+
+## Plotando a variação da clorofila (em mg/m3) para porção do Oceano
+## Atlântico pré-selecionada anteriormente.
+levelplot(clo2, par.settings = colTheme)
+
+## Carregando a imagem TIFF com dados de População nos Continentes -
+## Database NASA
+pop <- raster("./Espacial-Data/RASTER/875430rgb-167772161.0.FLOAT.TIFF")
+
+## Plotando a variação da clorofila (em mg/m3) para porção do Oceano
+## Atlântico pré-selecionada anteriormente.
+colTheme <- rasterTheme(pch = 19, cex = 0.7,
+                        region = rev(brewer.pal(9, "Reds")))
+
+pTotal <- levelplot(pop, zscaleLog = 10, par.settings = colTheme)
+pTotal
+
+## Carregando a imagem TIFF com dados de Cobertura dos Continentes -
+## Database NASA
+landClass <- raster("./Espacial-Data/RASTER/241243rgb-167772161.0.TIFF")
+
+## Reclassificando o objeto raster landClass - A classificação está
+## ponderada da seguinte forma, 0 - oceano, 1 a 5 - Florestas, 6 a 11 -
+## Pastagens e Pantanos e de 12 a 16 - Área estéril e cobertas de neve
+landClass[landClass %in% c(0, 254)] <- NA
+landClass <- cut(landClass, c(0, 5, 11, 14, 16))
+classes <- c('FLOR', 'CAMPOS', 'URB', 'ESTER')
+nClasses <- length(classes)
+
+## Range dos dados reclassificados
+rng <- c(minValue(landClass), maxValue(landClass))
+
+## Definição dos breaks (intervalos) das cores a serem plotadas
+my.at <- seq(rng[1]-1, rng[2])
+
+## Definindo os rótulos onde serão inseridos os textos da legenda
+my.labs.at <- seq(rng[1], rng[2])-0.5
+
+levelplot(landClass, at = my.at, margin = FALSE,
+          col.regions = terrain_hcl(4),
+          colorkey =
+          list(labels = list(labels = classes, ## Nomes das classes
+                   at = my.labs.at))) ## Local onde serão plotadas
+
+## Interseccionado as duas bases de dados, população e classificação do
+## terreno para análises posteriores
+s <- stack(pop, landClass)
+
+## Atribuindo novo nome ao objeto de dados
+layerNames(s) <- c('pop', 'landClass')
+
+## Histograma do percentual populacional por classe de terreno
+histogram(~ log10(pop) | landClass, data = s,
+          scales = list(relation = 'free'),
+          strip = strip.custom(strip.levels = TRUE), as.table = TRUE)
+
+
+
+
+
+
+
+
+
+
+

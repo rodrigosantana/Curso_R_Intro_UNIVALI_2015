@@ -1,0 +1,9 @@
+knitr
+stats
+graphics
+grDevices
+utils
+datasets
+lattice
+methods
+base

@@ -999,7 +999,7 @@ rsantana@univali.br <span style="float:right;"> fernandomayer@gmail.com </span>
 <span class="glyphicon glyphicon-chevron-down"></span> R output
 </h5>
 </div>
-<pre style=""><code class="output r">[1] "/media/Backup/Dropbox/Cursos/Ministrados/Curso_R_Intro_UNIVALI_2015"
+<pre style=""><code class="output r">[1] "/media/Dados/Dropbox/Cursos/Ministrados/Curso_R_Intro_UNIVALI_2015"
 </code></pre>
 </div>
 </div>
@@ -1078,6 +1078,7 @@ rsantana@univali.br <span style="float:right;"> fernandomayer@gmail.com </span>
 <p>Arquivo &gt;&gt; Novo script.</p>
 </blockquote>
 <p>nomeie conforme desejado e salve o script com a extensão .R;</p>
+<p><img src="imgs/RStudio01.png" alt="" /></p>
 <ul>
 <li><p>Para envio rápido dos comandos digitados no &quot;Editor de script&quot; do RStudio diretamente para o &quot;Console&quot; do R é possível utilizar o atalho Ctrl + R;</p></li>
 <li><p>Para adicionar comentários/anotações ao script que não fazem parte dos comandos utilizados nas análises, utiliza-se o símbolo &quot;#&quot; antes do texto desejado. O que estiver depois do símbolo não será interpretado pelo R. Portanto:</p></li>
@@ -1112,7 +1113,7 @@ rsantana@univali.br <span style="float:right;"> fernandomayer@gmail.com </span>
 <hr />
 <h3 id="mecanismos-de-ajuda-no-r">Mecanismos de ajuda no R</h3>
 <p>Memorizar todos os comandos do R é praticamente impossível. Para auxiliar nesta tarefa, o R possui uma estrutura completa de pesquisa sobre temas correlatos às funções existentes em seus pacotes.</p>
-<p>A função &quot;help.search()&quot; ajuda o usuário na busca por um determinado tema de interesse dentro da base do R ou em um pacote adicional específico. Trata-se de uma pesquisa às bases de documentos do R através de uma pesquisa por palavra-chave (<em>em inglês</em>).</p>
+<p>A função <em>&quot;help.search()&quot;</em> ajuda o usuário na busca por um determinado tema de interesse dentro da base do R ou em um pacote adicional específico. Trata-se de uma pesquisa às bases de documentos do R através de uma pesquisa por palavra-chave (<em>em inglês</em>).</p>
 <div class="row">
 <div class="panel panel-primary">
 <div class="source R panel-heading toggle">
@@ -1127,7 +1128,7 @@ help.search("linear models")
 ??"linear models"</code></pre>
 </div>
 </div>
-<p>Ou ainda, podemos pesquisar sobre uma função ou comando de nome conhecido, através da função &quot;help()&quot; presente no <em>software</em> R.</p>
+<p>Ou ainda, podemos pesquisar sobre uma função ou comando de nome conhecido, através da função <em>&quot;help()&quot;</em> presente no <em>software</em> R.</p>
 <div class="row">
 <div class="panel panel-primary">
 <div class="source R panel-heading toggle">
@@ -1179,18 +1180,6 @@ help(mean)
 <ul>
 <li>Uma maneira simples de acessar os dados armazenados na memória da CPU (o R não permite acesso direto à memória).</li>
 </ul>
-<p>Estrutura de programação no R:</p>
-<ul>
-<li>Objetos -&gt; Classes -&gt; Métodos</li>
-</ul>
-<blockquote>
-<p>&quot;Tudo no R é um objeto.&quot;</p>
-</blockquote>
-<blockquote>
-<p>&quot;Todo objeto no R tem uma classe&quot;</p>
-</blockquote>
-<p><em>Classe</em> é a definição de um objeto. Descreve a forma do objeto e como ele será manipulado pelas diferentes funções do R.</p>
-<p><em>Método</em> são funções genéricas que executam suas tarefas de acordo com a classe de cada objeto.</p>
 <div class="row">
 <div class="panel panel-primary">
 <div class="source R panel-heading toggle">
@@ -1232,6 +1221,183 @@ x</code></pre>
 </code></pre>
 </div>
 </div>
+<h2 id="estrutura-de-dados-no-r">Estrutura de dados no R</h2>
+<p>Estrutura de programação no R:</p>
+<ul>
+<li>Objetos -&gt; Classes -&gt; Métodos</li>
+</ul>
+<blockquote>
+<p>&quot;Tudo no R é um objeto.&quot;</p>
+</blockquote>
+<blockquote>
+<p>&quot;Todo objeto no R tem uma classe&quot;</p>
+</blockquote>
+<p><em>Classe</em> é a definição de um objeto. Descreve a forma do objeto e como ele será manipulado pelas diferentes funções do R.</p>
+<p><em>Método</em> são funções genéricas que executam suas tarefas de acordo com a classe de cada objeto.</p>
+<p>A organização dos dados no R podem ser organizadas de maneiras distintas, as principais estruturas existentes são:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Estrutura</th>
+<th align="left">Descrição</th>
+<th align="left">Função</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">vector</td>
+<td align="left">Vetor de dados com um ou mais elementos de mesmo tipo</td>
+<td align="left"><em>&quot;c()&quot;</em></td>
+</tr>
+<tr class="even">
+<td align="left">matrix</td>
+<td align="left">Matriz de dados com duas dimensões e um único tipo de dado</td>
+<td align="left"><em>&quot;matrix()&quot;</em></td>
+</tr>
+<tr class="odd">
+<td align="left">data.frame</td>
+<td align="left">Similar à estrutura da matriz, porém permite colunas com diferentes tipos de dados</td>
+<td align="left"><em>&quot;data.frame()&quot;</em></td>
+</tr>
+<tr class="even">
+<td align="left">list</td>
+<td align="left">Objeto que permite combinar diferentes estruturas de dados em um único objeto</td>
+<td align="left"><em>&quot;list()&quot;</em></td>
+</tr>
+</tbody>
+</table>
+<div class="row">
+<div class="panel panel-primary">
+<div class="source R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</h5>
+</div>
+<pre style=""><code class="source r">### Exemplo de vetor no R
+vet <- c(2, 3, 55, -4)
+vet</code></pre>
+</div>
+<div class="panel panel-success">
+<div class="output R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</h5>
+</div>
+<pre style=""><code class="output r">[1]  2  3 55 -4
+</code></pre>
+</div>
+<div class="panel panel-primary">
+<div class="source R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</h5>
+</div>
+<pre style=""><code class="source r">### Exemplo de matriz no R
+mat <- matrix(c(2, 0, 10, -5), nrow = 2)
+mat</code></pre>
+</div>
+<div class="panel panel-success">
+<div class="output R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</h5>
+</div>
+<pre style=""><code class="output r">     [,1] [,2]
+[1,]    2   10
+[2,]    0   -5
+</code></pre>
+</div>
+<div class="panel panel-primary">
+<div class="source R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</h5>
+</div>
+<pre style=""><code class="source r">### Exemplo de data frame no R
+dat <- data.frame(local = c("A", "B", "C"), N = c(10, 24, 5))
+dat</code></pre>
+</div>
+<div class="panel panel-success">
+<div class="output R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</h5>
+</div>
+<pre style=""><code class="output r">  local  N
+1     A 10
+2     B 24
+3     C  5
+</code></pre>
+</div>
+<div class="panel panel-primary">
+<div class="source R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</h5>
+</div>
+<pre style=""><code class="source r">### Exemplo de list no R
+lst <- list(vet, mat, dat)
+lst</code></pre>
+</div>
+<div class="panel panel-success">
+<div class="output R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</h5>
+</div>
+<pre style=""><code class="output r">[[1]]
+[1]  2  3 55 -4
+
+[[2]]
+     [,1] [,2]
+[1,]    2   10
+[2,]    0   -5
+
+[[3]]
+  local  N
+1     A 10
+2     B 24
+3     C  5
+</code></pre>
+</div>
+</div>
+<h2 id="tipos-de-dados-no-r">Tipos de dados no R</h2>
+<p>No R, os dados podem assumir diferentes tipos, tais como:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Tipo</th>
+<th align="left">Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">character</td>
+<td align="left">Texto ou caracter</td>
+</tr>
+<tr class="even">
+<td align="left">numeric</td>
+<td align="left">Números inteiros ou reais</td>
+</tr>
+<tr class="odd">
+<td align="left">logical</td>
+<td align="left">Booleano ou Verdadeiro/Falso (TRUE/FALSE)</td>
+</tr>
+<tr class="even">
+<td align="left">complex</td>
+<td align="left">Números complexos</td>
+</tr>
+<tr class="odd">
+<td align="left">date</td>
+<td align="left">Datas</td>
+</tr>
+<tr class="even">
+<td align="left">factor</td>
+<td align="left">Texto ou caracter estruturado em níveis</td>
+</tr>
+</tbody>
+</table>
+<hr />
 <h3 id="nomeando-os-objetos-no-r">Nomeando os objetos no R</h3>
 <p>Dicas e considerações importantes para nomenclatura de objetos no R:</p>
 <ul>
@@ -1242,9 +1408,73 @@ x</code></pre>
 <li>Evite também o uso de nomes de funções do R, tais como: c q t C D F I T diff df data var pt</li>
 <li>O R é case-sensitive, portanto: <br /> <em>dados</em> <span class="math inline"> ≠ </span> <em>Dados</em> <span class="math inline"> ≠ </span> <em>DADOS</em></li>
 </ul>
+<h3 id="listando-e-removendo-objetos-da-área-de-trabalho-do-r">Listando e removendo objetos da área de trabalho do R</h3>
+<p>Uma vez que temos inúmeros objetos criados em nossa área de trabalho do R, podemos listar e observar este objeto. O comando que auxilia nesta tarefa é o <em>&quot;ls()&quot;</em>, abreviação da palavra (em inglês) <em>list</em>.</p>
+<div class="row">
+<div class="panel panel-primary">
+<div class="source R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</h5>
+</div>
+<pre style=""><code class="source r">### Criando alguns objetos
+x <- 2
+y <- 3
+z <- 4
+
+### Listando objetos já existentes em nossa área de trabalho
+ls()</code></pre>
+</div>
+<div class="panel panel-success">
+<div class="output R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</h5>
+</div>
+<pre style=""><code class="output r">[1] "dados" "dat"   "lst"   "mat"   "vet"   "x"     "y"     "z"    
+</code></pre>
+</div>
+</div>
+<p>E o que acontece se atribuirmos um novo valor à um objeto que já existe em nossa área de trabalho?</p>
+<div class="row">
+<div class="panel panel-primary">
+<div class="source R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</h5>
+</div>
+<pre style=""><code class="source r">### Atribuindo um novo valor para x
+x <- 362
+
+### Imprimindo o objeto x
+x</code></pre>
+</div>
+<div class="panel panel-success">
+<div class="output R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</h5>
+</div>
+<pre style=""><code class="output r">[1] 362
+</code></pre>
+</div>
+</div>
+<p>E para remover objetos desnecessários existentes em nossa área de trabalho? o comando <em>&quot;rm()&quot;</em>, abreviação da palavra inglesa <em>remove</em> é utilizado para este fim. Para usá-lo, basta fornecer o nome do objeto a ser removido, exemplo:</p>
+<div class="row">
+<div class="panel panel-primary">
+<div class="source R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</h5>
+</div>
+<pre style=""><code class="source r">### Removendo o objeto x da lista de objetos existentes na área de
+### trabalho do R
+rm(x)</code></pre>
+</div>
+</div>
 <p><strong>Prática com R</strong></p>
 <ol style="list-style-type: decimal">
-<li>Crie um objeto no R que irá armazenar o resultado da seguinte equação: 32 + 16^2 - 25^3;</li>
+<li>Crie um objeto de nome <em>x</em> no R e armazene neste o resultado da seguinte equação: 32 + 16^2 - 25^3;</li>
 </ol>
 <p>Importante:</p>
 <table>
@@ -1293,9 +1523,1021 @@ x</code></pre>
 </tr>
 </tbody>
 </table>
+<ol start="2" style="list-style-type: decimal">
+<li><p>Divida <em>x</em> por 345 e armazene este novo resultado em um novo objeto chamado <em>y</em>.</p></li>
+<li><p>Visualize os valores armazenados nos objetos <em>x</em> e <em>y</em> criados anteriormente, confira se os valores alcançados foram -15337 para <em>x</em> e -44,45507.</p></li>
+<li><p>Por fim, remova os objetos <em>x</em> e <em>y</em> de sua área de trabalho.</p></li>
+</ol>
 <hr />
 <h2 id="carregando-dados-no-r">Carregando dados no R</h2>
+<p>Existem inúmeras formas de carregar/importar dados para o R. A maneira mais simples e comum é utilizar uma Planilha Eletrônica para armazenamento das informações, estruturando as variáveis em colunas e as observações em linhas.</p>
+<p><img src="imgs/Planilha.png" alt="" /></p>
+<p>Esta planilha deve ser salva no formato csv, arquivo de texto separado por virgula, e na mesma pasta criada para armazenar os arquivos que farão parte do escopo do trabalho em questão. Com isso, no R, o comando para importação é o <em>&quot;read.table()&quot;</em>.</p>
+<div class="row">
+<div class="panel panel-primary">
+<div class="source R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</h5>
+</div>
+<pre style=""><code class="source r">### Importando uma planilha de dados para o R.
+dados <- read.table("Dados_ICCAT.csv", header = TRUE, sep = ";",
+                    dec = ",")</code></pre>
+</div>
+</div>
 <hr />
+<h2 id="visualizando-os-dados-importados-no-r">Visualizando os dados importados no R</h2>
+<p>Como visto antes, uma desvantagem do R é a não visualização em tempo real dos seus dados. Uma alternativa é utilizar a função ou comando <em>&quot;head()&quot;</em> do R. Este comando retorna as 6 primeiras linhas do objeto desejado.</p>
+<div class="row">
+<div class="panel panel-primary">
+<div class="source R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</h5>
+</div>
+<pre style=""><code class="source r">### Visualizando as 6 primeiras linhas do objeto "dados" criado
+### anteriormente.
+head(dados)</code></pre>
+</div>
+<div class="panel panel-success">
+<div class="output R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</h5>
+</div>
+<pre style=""><code class="output r">  FROTA  ANO MES LAT LON    EFF  LAGE BRANCA BANDOLIM
+1   BRA 1998   1   0  25  24520  1600    100     2900
+2   BRA 1998   1   0  30 155450 38500   1000    43900
+3   BRA 1998   1   5  25  34300 15800    900     7900
+4   BRA 1998   1  10  30 192666  8800 101800     7500
+5   BRA 1998   1  10  35 109705  4100  71900     1500
+6   BRA 1998   1  20  25  19380   400   1200      400
+</code></pre>
+</div>
+</div>
+<p>Lembrando que todo objeto tem uma classe no R, como visualizar o tipo de classe do objeto dados? A função <em>&quot;class()&quot;</em> do R auxilia nisto. Recordando ainda que, cada variável possui um tipo, como visualizar os tipos de dados presentes em nosso objeto? Ou melhor, como que o R interpretou os dados importados da Planilha Eletrônica? O comando <em>&quot;str()&quot;</em> é uma alternativa para esta compreensão.</p>
+<div class="row">
+<div class="panel panel-primary">
+<div class="source R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</h5>
+</div>
+<pre style=""><code class="source r">### Visualizando a classe do objeto dados.
+class(dados)</code></pre>
+</div>
+<div class="panel panel-success">
+<div class="output R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</h5>
+</div>
+<pre style=""><code class="output r">[1] "data.frame"
+</code></pre>
+</div>
+<div class="panel panel-primary">
+<div class="source R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</h5>
+</div>
+<pre style=""><code class="source r">### Visualizando a estrutura dos dados presentes no objeto dados.
+str(dados)</code></pre>
+</div>
+<div class="panel panel-success">
+<div class="output R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</h5>
+</div>
+<pre style=""><code class="output r">'data.frame':  540 obs. of  9 variables:
+ $ FROTA   : Factor w/ 2 levels "BRA","BRA-ESP": 1 1 1 1 1 1 1 1 1 1 ...
+ $ ANO     : int  1998 1998 1998 1998 1998 1998 1998 1998 1998 1998 ...
+ $ MES     : int  1 1 1 1 1 1 2 2 2 2 ...
+ $ LAT     : int  0 0 5 10 10 20 0 5 5 10 ...
+ $ LON     : int  25 30 25 30 35 25 30 25 30 30 ...
+ $ EFF     : int  24520 155450 34300 192666 109705 19380 96830 27460 7820 62368 ...
+ $ LAGE    : num  1600 38500 15800 8800 4100 400 7800 900 700 2300 ...
+ $ BRANCA  : num  100 1000 900 101800 71900 ...
+ $ BANDOLIM: num  2900 43900 7900 7500 1500 400 22200 4900 300 1800 ...
+</code></pre>
+</div>
+</div>
+<p>Uma alternativa mais informativa, porém ainda rápida, pode ser acessada pela função <em>&quot;summary()&quot;</em> do R. Esta função traz um sumário estatístico de cada variável presente no objeto, respeitando as respectivas tipificações.</p>
+<div class="row">
+<div class="panel panel-primary">
+<div class="source R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</h5>
+</div>
+<pre style=""><code class="source r">### Sumário das variáveis presentes no objeto dados.
+summary(dados)</code></pre>
+</div>
+<div class="panel panel-success">
+<div class="output R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</h5>
+</div>
+<pre style=""><code class="output r">     FROTA          ANO            MES              LAT       
+ BRA    :379   Min.   :1998   Min.   : 1.000   Min.   : 0.00  
+ BRA-ESP:161   1st Qu.:1999   1st Qu.: 4.000   1st Qu.: 0.00  
+               Median :2001   Median : 7.000   Median :10.00  
+               Mean   :2001   Mean   : 7.206   Mean   :13.83  
+               3rd Qu.:2003   3rd Qu.:10.000   3rd Qu.:25.00  
+               Max.   :2004   Max.   :12.000   Max.   :35.00  
+                                                              
+      LON             EFF              LAGE              BRANCA        
+ Min.   : 0.00   Min.   :   750   Min.   :      13   Min.   :    11.6  
+ 1st Qu.:28.75   1st Qu.:  6400   1st Qu.:     361   1st Qu.:   137.2  
+ Median :30.00   Median : 16012   Median :    1225   Median :   551.9  
+ Mean   :34.00   Mean   : 31668   Mean   :  187912   Mean   :  8983.4  
+ 3rd Qu.:45.00   3rd Qu.: 36200   3rd Qu.:    4570   3rd Qu.:  2366.3  
+ Max.   :50.00   Max.   :430002   Max.   :19908792   Max.   :381488.0  
+                                                                       
+    BANDOLIM       
+ Min.   :       7  
+ 1st Qu.:     141  
+ Median :     617  
+ Mean   :  157593  
+ 3rd Qu.:    2828  
+ Max.   :21794084  
+ NA's   :8         
+</code></pre>
+</div>
+</div>
+<hr />
+<h2 id="manipulação-de-dados">Manipulação de dados</h2>
+<h3 id="indexação">Indexação</h3>
+<p>Como visualizar posições específicas em nossos dados? O R, assim como outras linguagens de programação científica, trabalha com indexação algébrica, ou seja, orientação de posicionamento por indexação de vetores e matrizes.</p>
+<p>Assim, em um vetor de dados (estrutura unidimensional) cada uma das observações presentes neste vetor possui um índice de posição único. Exemplo:</p>
+<div class="row">
+<div class="panel panel-primary">
+<div class="source R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</h5>
+</div>
+<pre style=""><code class="source r">### Vetor com 10 valores inteiros
+vet <- c(1, 2, 5, 10, 9, 7, 3, 8, 6, 4)
+
+### Qual o valor na posição 4?
+vet[4]</code></pre>
+</div>
+<div class="panel panel-success">
+<div class="output R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</h5>
+</div>
+<pre style=""><code class="output r">[1] 10
+</code></pre>
+</div>
+<div class="panel panel-primary">
+<div class="source R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</h5>
+</div>
+<pre style=""><code class="source r">### Qual o valor na posição 9?
+vet[9]</code></pre>
+</div>
+<div class="panel panel-success">
+<div class="output R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</h5>
+</div>
+<pre style=""><code class="output r">[1] 6
+</code></pre>
+</div>
+</div>
+<p>No caso de uma matriz de dados (estrutura bidimensional) cada uma das observações presentes nesta matriz possui um índice composto de indicador de linha e indicador de coluna. Exemplo:</p>
+<div class="row">
+<div class="panel panel-primary">
+<div class="source R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</h5>
+</div>
+<pre style=""><code class="source r">### Matriz com os mesmos valores presentes no vetor "vet".
+mat <- matrix(vet, nrow = 5)
+
+### Qual o valor presente na linha 2 e coluna 2?
+mat[2, 2]</code></pre>
+</div>
+<div class="panel panel-success">
+<div class="output R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</h5>
+</div>
+<pre style=""><code class="output r">[1] 3
+</code></pre>
+</div>
+<div class="panel panel-primary">
+<div class="source R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</h5>
+</div>
+<pre style=""><code class="source r">### Qual o valor presente na linha 5 e coluna 2?
+mat[5, 2]</code></pre>
+</div>
+<div class="panel panel-success">
+<div class="output R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</h5>
+</div>
+<pre style=""><code class="output r">[1] 4
+</code></pre>
+</div>
+<div class="panel panel-primary">
+<div class="source R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</h5>
+</div>
+<pre style=""><code class="source r">### Quais os valores presentes na linha 5 em todas as colunas?
+mat[5,]</code></pre>
+</div>
+<div class="panel panel-success">
+<div class="output R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</h5>
+</div>
+<pre style=""><code class="output r">[1] 9 4
+</code></pre>
+</div>
+<div class="panel panel-primary">
+<div class="source R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</h5>
+</div>
+<pre style=""><code class="source r">### Quais os valores presentes em todas as linhas da coluna 1?
+mat[,1]</code></pre>
+</div>
+<div class="panel panel-success">
+<div class="output R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</h5>
+</div>
+<pre style=""><code class="output r">[1]  1  2  5 10  9
+</code></pre>
+</div>
+</div>
+<p>O mesmo comportamento observado na indexação de matrizes pode ser utilizado para objetos da classe data.frame.</p>
+<div class="row">
+<div class="panel panel-primary">
+<div class="source R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</h5>
+</div>
+<pre style=""><code class="source r">### Utilizando o objeto dados importado anteriormente, qual o valor da
+### linha 2 e coluna 3
+dados[2,3]</code></pre>
+</div>
+<div class="panel panel-success">
+<div class="output R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</h5>
+</div>
+<pre style=""><code class="output r">[1] 1
+</code></pre>
+</div>
+<div class="panel panel-primary">
+<div class="source R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</h5>
+</div>
+<pre style=""><code class="source r">### Qual os valores da coluna 3 em todas as linhas
+dados[,3]</code></pre>
+</div>
+<div class="panel panel-success">
+<div class="output R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</h5>
+</div>
+<pre style=""><code class="output r">  [1]  1  1  1  1  1  1  2  2  2  2  2  2  3  3  4  4  4  5  5  5  5  5  6
+ [24]  6  6  6  6  7  7  7  7  7  7  8  8  8  8  9  9  9  9  9 10 10 10 10
+ [47] 10 10 10 10 10 11 11 11 11 11 11 11 11 11 12 12 12 12 12 12 12  1  1
+ [70]  2  2  2  2  2  2  3  3  3  3  3  3  3  4  4  4  4  4  4  4  5  5  5
+ [93]  5  5  5  6  6  6  6  6  6  7  7  7  8  8  8  8  8  8  9  9  9  9  9
+[116]  9  9 10 10 10 10 10 10 10 10 11 11 11 11 11 11 12 12 12 12 12 12  1
+[139]  1  1  2  2  2  2  3  3  3  3  4  4  5  5  5  5  5  6  6  6  7  7  7
+[162]  7  7  7  8  8  9  9  9  9 10 10 10 10 11 11 11 11 12 12 12 12  1  1
+[185]  1  1  2  2  2  2  2  3  3  3  3  4  4  4  5  5  5  6  7  9 10 10 11
+[208] 12  2  2  2  2  2  3  3  3  3  3  3  3  3  3  3  3  3  4  4  4  4  4
+[231]  4  5  5  5  6  6  6  7  7  7  8  8  8  8  9  9  9  9 10 10 10 11 11
+[254] 11 11 12 12  9  9  9 10 11 11 11 12 12 12  1  1  2  2  3  4  4  4  5
+[277]  5  5  6  6  6  7  7  7  8  8  8  9  9  9  9 10 10 11 11 11  5  7  7
+[300]  8  8  9  9 10 11 11 11 11 12  4  4  5  5  6  6  6  8  8  9 10 11 11
+[323] 12  1  1  1 10 10 10 11 11 11 11 12 12 12 12 12  4  4  5  5  6  6  6
+[346]  7  7  7  8  8  9  9  9  9 10 10 11 12 12  1  1  2  2  3  4  4  5  5
+[369]  5  6  6  7  7  7  8  8  9  9 10 10 10 11 11 12 12 12 12  7  5  5  6
+[392]  7  8  9  2  4  2  4  8  8  9  9  9  9 10 10 10 10 10 11 11 11 11 11
+[415] 11 11 12 12 12 12  2  4  4  6  7  8  8 10 11 11 11 11 11 12 12  1  2
+[438]  2  2  3  4  5  5  6  6  6  7  7  8  8  8  8  9  9  9 10 10 10 11 11
+[461] 11 11 12  6  6  6  6  7  7  7  7  7  7  8  8 10 11 11 11 12 12 12 12
+[484]  1  1  2  2  4  4  4  4  5  5  5  5  5  5  6  6  6  6  6  6  7  7  7
+[507]  7  7  8  9  9  9 10 10 10 10 10 11 11 11 11 11 11 11 11 12 12 12  1
+[530]  1  1  6  6  7  8  9  9 11 12 12
+</code></pre>
+</div>
+</div>
+<p>No entanto, objetos da classe data.frame tem uma alternativa melhor para indexação de valores. O nome das variáveis. As colunas de um data.frame podem ser acessadas com o auxilio do símbolo <em>$</em>. Exemplo:</p>
+<div class="row">
+<div class="panel panel-primary">
+<div class="source R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</h5>
+</div>
+<pre style=""><code class="source r">### Quais os valores da coluna 3 do objeto dados? Para responder,
+### precisamos saber qual o nome da coluna 3, para visualizar os nomes
+### das colunas de um objeto temos duas alternativas: 1) utilizar a
+### função head() como vimos antes, ou; 2) utilizar a função names() que
+### traz um vetor com os nomes das variáveis.
+
+### Utilizando a função head
+head(dados)</code></pre>
+</div>
+<div class="panel panel-success">
+<div class="output R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</h5>
+</div>
+<pre style=""><code class="output r">  FROTA  ANO MES LAT LON    EFF  LAGE BRANCA BANDOLIM
+1   BRA 1998   1   0  25  24520  1600    100     2900
+2   BRA 1998   1   0  30 155450 38500   1000    43900
+3   BRA 1998   1   5  25  34300 15800    900     7900
+4   BRA 1998   1  10  30 192666  8800 101800     7500
+5   BRA 1998   1  10  35 109705  4100  71900     1500
+6   BRA 1998   1  20  25  19380   400   1200      400
+</code></pre>
+</div>
+<div class="panel panel-primary">
+<div class="source R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</h5>
+</div>
+<pre style=""><code class="source r">### Utilizando a função names
+names(dados)</code></pre>
+</div>
+<div class="panel panel-success">
+<div class="output R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</h5>
+</div>
+<pre style=""><code class="output r">[1] "FROTA"    "ANO"      "MES"      "LAT"      "LON"      "EFF"     
+[7] "LAGE"     "BRANCA"   "BANDOLIM"
+</code></pre>
+</div>
+<div class="panel panel-primary">
+<div class="source R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</h5>
+</div>
+<pre style=""><code class="source r">### Coluna 3 = MES, quais os valores da coluna MES do objeto dados
+### então?
+dados$MES</code></pre>
+</div>
+<div class="panel panel-success">
+<div class="output R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</h5>
+</div>
+<pre style=""><code class="output r">  [1]  1  1  1  1  1  1  2  2  2  2  2  2  3  3  4  4  4  5  5  5  5  5  6
+ [24]  6  6  6  6  7  7  7  7  7  7  8  8  8  8  9  9  9  9  9 10 10 10 10
+ [47] 10 10 10 10 10 11 11 11 11 11 11 11 11 11 12 12 12 12 12 12 12  1  1
+ [70]  2  2  2  2  2  2  3  3  3  3  3  3  3  4  4  4  4  4  4  4  5  5  5
+ [93]  5  5  5  6  6  6  6  6  6  7  7  7  8  8  8  8  8  8  9  9  9  9  9
+[116]  9  9 10 10 10 10 10 10 10 10 11 11 11 11 11 11 12 12 12 12 12 12  1
+[139]  1  1  2  2  2  2  3  3  3  3  4  4  5  5  5  5  5  6  6  6  7  7  7
+[162]  7  7  7  8  8  9  9  9  9 10 10 10 10 11 11 11 11 12 12 12 12  1  1
+[185]  1  1  2  2  2  2  2  3  3  3  3  4  4  4  5  5  5  6  7  9 10 10 11
+[208] 12  2  2  2  2  2  3  3  3  3  3  3  3  3  3  3  3  3  4  4  4  4  4
+[231]  4  5  5  5  6  6  6  7  7  7  8  8  8  8  9  9  9  9 10 10 10 11 11
+[254] 11 11 12 12  9  9  9 10 11 11 11 12 12 12  1  1  2  2  3  4  4  4  5
+[277]  5  5  6  6  6  7  7  7  8  8  8  9  9  9  9 10 10 11 11 11  5  7  7
+[300]  8  8  9  9 10 11 11 11 11 12  4  4  5  5  6  6  6  8  8  9 10 11 11
+[323] 12  1  1  1 10 10 10 11 11 11 11 12 12 12 12 12  4  4  5  5  6  6  6
+[346]  7  7  7  8  8  9  9  9  9 10 10 11 12 12  1  1  2  2  3  4  4  5  5
+[369]  5  6  6  7  7  7  8  8  9  9 10 10 10 11 11 12 12 12 12  7  5  5  6
+[392]  7  8  9  2  4  2  4  8  8  9  9  9  9 10 10 10 10 10 11 11 11 11 11
+[415] 11 11 12 12 12 12  2  4  4  6  7  8  8 10 11 11 11 11 11 12 12  1  2
+[438]  2  2  3  4  5  5  6  6  6  7  7  8  8  8  8  9  9  9 10 10 10 11 11
+[461] 11 11 12  6  6  6  6  7  7  7  7  7  7  8  8 10 11 11 11 12 12 12 12
+[484]  1  1  2  2  4  4  4  4  5  5  5  5  5  5  6  6  6  6  6  6  7  7  7
+[507]  7  7  8  9  9  9 10 10 10 10 10 11 11 11 11 11 11 11 11 12 12 12  1
+[530]  1  1  6  6  7  8  9  9 11 12 12
+</code></pre>
+</div>
+<div class="panel panel-primary">
+<div class="source R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</h5>
+</div>
+<pre style=""><code class="source r">### Qual o valor da segunda linha da coluna ANO do objeto dados?
+dados$ANO[2]</code></pre>
+</div>
+<div class="panel panel-success">
+<div class="output R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</h5>
+</div>
+<pre style=""><code class="output r">[1] 1998
+</code></pre>
+</div>
+</div>
+<h3 id="seleção-condicional">Seleção condicional</h3>
+<p>Pensando no exemplo da objeto &quot;dados&quot;, se quisessemos criar uma nova variável - &quot;Trimestre&quot;, como poderíamos fazer isto?</p>
+<div class="row">
+<div class="panel panel-primary">
+<div class="source R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</h5>
+</div>
+<pre style=""><code class="source r">### Criando a nova variável no objeto dados, chamada Trimestre e
+### preenchendo as observações com o valor 1
+dados$Trimestre <- 1
+
+### Considerando que o segundo Trimestre de cada ano é composto pelos
+### meses 4, 5 e 6, poderíamos implementar uma seleção condicional, de
+### forma que a coluna Trimestre, onde os meses foram iguais a 4, 5 e 6
+### receba o valor 2.
+dados$Trimestre[dados$MES == 4 | dados$MES == 5 | dados$MES == 6] <- 2
+
+### Repetindo esta mesma lógica para os demais trimestres, temos a
+### variável trimestre criada em nossa base de dados.
+dados$Trimestre[dados$MES == 7 | dados$MES == 8 | dados$MES == 9] <- 3
+dados$Trimestre[dados$MES == 10 | dados$MES == 11 | dados$MES == 12] <- 4</code></pre>
+</div>
+</div>
+<hr />
+<h2 id="estatística-descritiva">Estatística Descritiva</h2>
+<p>Observando medidas de centro - Média e Mediana</p>
+<div class="row">
+<div class="panel panel-primary">
+<div class="source R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</h5>
+</div>
+<pre style=""><code class="source r">### Média e mediana das capturas de Albacora Lage
+mean(dados$LAGE)</code></pre>
+</div>
+<div class="panel panel-success">
+<div class="output R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</h5>
+</div>
+<pre style=""><code class="output r">[1] 187911.7
+</code></pre>
+</div>
+<div class="panel panel-primary">
+<div class="source R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</h5>
+</div>
+<pre style=""><code class="source r">median(dados$LAGE)</code></pre>
+</div>
+<div class="panel panel-success">
+<div class="output R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</h5>
+</div>
+<pre style=""><code class="output r">[1] 1224.875
+</code></pre>
+</div>
+<div class="panel panel-primary">
+<div class="source R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</h5>
+</div>
+<pre style=""><code class="source r">### Média e mediana das capturas de Albacora Branca
+mean(dados$BRANCA)</code></pre>
+</div>
+<div class="panel panel-success">
+<div class="output R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</h5>
+</div>
+<pre style=""><code class="output r">[1] 8983.383
+</code></pre>
+</div>
+<div class="panel panel-primary">
+<div class="source R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</h5>
+</div>
+<pre style=""><code class="source r">median(dados$BRANCA)</code></pre>
+</div>
+<div class="panel panel-success">
+<div class="output R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</h5>
+</div>
+<pre style=""><code class="output r">[1] 551.85
+</code></pre>
+</div>
+<div class="panel panel-primary">
+<div class="source R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</h5>
+</div>
+<pre style=""><code class="source r">### Média e mediana das capturas de Albacora BANDOLIM - Ops!!!
+mean(dados$BANDOLIM)</code></pre>
+</div>
+<div class="panel panel-success">
+<div class="output R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</h5>
+</div>
+<pre style=""><code class="output r">[1] NA
+</code></pre>
+</div>
+<div class="panel panel-primary">
+<div class="source R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</h5>
+</div>
+<pre style=""><code class="source r">median(dados$BANDOLIM)</code></pre>
+</div>
+<div class="panel panel-success">
+<div class="output R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</h5>
+</div>
+<pre style=""><code class="output r">[1] NA
+</code></pre>
+</div>
+</div>
+<p>Na presença de dados faltantes em nossa base de dados, o R por padrão retorna a indicação desta inconsistência em nossos dados. Para contornarmos este problema, grande parte das funções do R possuem o argumento <em>&quot;na.rm&quot;</em> para resolver esta particularidade.</p>
+<div class="row">
+<div class="panel panel-primary">
+<div class="source R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</h5>
+</div>
+<pre style=""><code class="source r">### Média e mediana das capturas de Albacora BANDOLIM - Ops!!!
+mean(dados$BANDOLIM, na.rm = TRUE)</code></pre>
+</div>
+<div class="panel panel-success">
+<div class="output R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</h5>
+</div>
+<pre style=""><code class="output r">[1] 157592.6
+</code></pre>
+</div>
+<div class="panel panel-primary">
+<div class="source R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</h5>
+</div>
+<pre style=""><code class="source r">median(dados$BANDOLIM, na.rm = TRUE)</code></pre>
+</div>
+<div class="panel panel-success">
+<div class="output R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</h5>
+</div>
+<pre style=""><code class="output r">[1] 617.3543
+</code></pre>
+</div>
+</div>
+<p>E se quisessmos calcular a média das capturas das três espécies trimestralmente, como poderíamos fazer isto de forma rápida?</p>
+<div class="row">
+<div class="panel panel-primary">
+<div class="source R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</h5>
+</div>
+<pre style=""><code class="source r">### Calculando a média das capturas das três espécies por trimestre.
+aggregate(cbind(LAGE, BRANCA, BANDOLIM) ~ Trimestre, data = dados,
+          FUN = mean, na.rm = TRUE)</code></pre>
+</div>
+<div class="panel panel-success">
+<div class="output R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</h5>
+</div>
+<pre style=""><code class="output r">  Trimestre       LAGE    BRANCA  BANDOLIM
+1         1 399425.435 15038.360 654961.18
+2         2  18015.208  8454.918 103212.43
+3         3   3830.654  8512.393  26121.55
+4         4 326068.234  6722.798  18578.37
+</code></pre>
+</div>
+</div>
+<p>Aumentando a estratificação da estimação, se quisessemos estimar agora a média das capturas de Albacora bandolim por ANO e TRIMESTRE?</p>
+<div class="row">
+<div class="panel panel-primary">
+<div class="source R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</h5>
+</div>
+<pre style=""><code class="source r">### Calculando a média das capturas de Albacora bandolim por ANO e
+### TRIMESTRE.
+tapply(dados$BANDOLIM, list(dados$ANO, dados$Trimestre),
+       FUN = mean, na.rm = TRUE)</code></pre>
+</div>
+<div class="panel panel-success">
+<div class="output R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</h5>
+</div>
+<pre style=""><code class="output r">                1           2           3           4
+1998    8113.3333   2256.2500   3861.1111   4248.4848
+1999    2162.9443    639.9778    800.7783    612.6617
+2000    5401.1945   1792.1800    695.1383   4211.0580
+2001 3758321.1071 554525.2439 296420.7782 137923.6190
+2002     911.5665   2210.8414   1713.9924    746.1188
+2003     848.5000    719.8235   1028.5909   1987.1176
+2004    6477.8571   1709.0000   3464.9615   5862.5667
+</code></pre>
+</div>
+</div>
+<p>Poderíamos aumentar ainda mais a estratificação das estimações, colocando mais uma dimensão na solicitação, estimando agora a captura média de Albacora branca por ANO, MES e FROTA.</p>
+<div class="row">
+<div class="panel panel-primary">
+<div class="source R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</h5>
+</div>
+<pre style=""><code class="source r">### Calculando a média das capturas de Albacora branca por ANO, MES e
+### FROTA.
+tapply(dados$BRANCA, list(dados$ANO, dados$MES, dados$FROTA),
+       FUN = mean, na.rm = TRUE)</code></pre>
+</div>
+<div class="panel panel-success">
+<div class="output R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</h5>
+</div>
+<pre style=""><code class="output r">, , BRA
+
+              1          2           3          4          5          6
+1998 29483.3333 11183.3333  80800.0000 43200.0000 49780.0000 52700.0000
+1999  2561.3900   287.8183    642.4171   711.9571   683.8100   948.4483
+2000   522.4367  1186.2175    987.6200   128.8200   240.4640   291.5400
+2001 10395.4350 55672.4219 129804.5690 40177.1500 13559.9247   333.2935
+2002         NA    66.6700    246.7625   652.7450  5938.5500  5237.4497
+2003   105.5000    41.0000    114.0000  1084.2000  1676.5000  1408.5000
+2004   609.0000  1305.5000    136.0000   545.5000   364.5714  1022.0000
+              7         8          9         10         11         12
+1998  58600.000 67225.000 11460.0000 22644.4444 40444.4444 43585.7143
+1999   1665.097  1079.802   317.8971   279.6087   453.9417   367.0167
+2000   1791.615   884.790   206.5075   590.9900   757.1000  2897.8850
+2001 196055.000        NA   197.7500   512.6527   137.2385  1817.0400
+2002   6989.966  2175.883  2368.0319   184.1167   326.4875    15.0000
+2003   2977.400  1515.286   851.3000   739.4000  1039.3333   612.8000
+2004    639.875  1017.000   635.7143  1088.0000  2017.0000   587.6667
+
+, , BRA-ESP
+
+              1        2   3        4      5          6         7        8
+1998         NA  2200.00  NA 1750.000     NA   700.0000   900.000   150.00
+1999 31010.0000  1595.00 100   40.000   70.0   230.3333   722.500  1356.00
+2000         NA       NA  NA       NA     NA 27040.9000 14846.505 14166.81
+2001 44478.4950 29925.22  NA 5053.925 2248.7  2888.4683  2046.204    84.75
+2002  3291.3133       NA  NA       NA     NA    79.1000   237.300  1609.12
+2003   841.6667       NA  NA       NA     NA         NA        NA       NA
+2004         NA   210.00  NA  205.000     NA         NA        NA   152.50
+            9        10       11        12
+1998       NA  100.0000  300.000  2800.000
+1999 1531.667 1006.6667 2534.750   450.000
+2000       NA   96.0500 7727.693 28698.327
+2001 1516.460 1588.1020 2152.791  4434.873
+2002 1346.395        NA   42.940   968.975
+2003       NA  153.3333  420.000  3110.400
+2004  922.000 2012.4000 1793.143   337.500
+</code></pre>
+</div>
+</div>
+<p>Observando medidas de variação - Desvio padrão, Variância, Coeficiente de variação.</p>
+<div class="row">
+<div class="panel panel-primary">
+<div class="source R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</h5>
+</div>
+<pre style=""><code class="source r">### Desvio padrão
+sd(dados$BRANCA)</code></pre>
+</div>
+<div class="panel panel-success">
+<div class="output R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</h5>
+</div>
+<pre style=""><code class="output r">[1] 32195.51
+</code></pre>
+</div>
+<div class="panel panel-primary">
+<div class="source R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</h5>
+</div>
+<pre style=""><code class="source r">### Variância
+var(dados$BRANCA)</code></pre>
+</div>
+<div class="panel panel-success">
+<div class="output R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</h5>
+</div>
+<pre style=""><code class="output r">[1] 1036551058
+</code></pre>
+</div>
+<div class="panel panel-primary">
+<div class="source R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</h5>
+</div>
+<pre style=""><code class="source r">sd(dados$BRANCA)^2</code></pre>
+</div>
+<div class="panel panel-success">
+<div class="output R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</h5>
+</div>
+<pre style=""><code class="output r">[1] 1036551058
+</code></pre>
+</div>
+<div class="panel panel-primary">
+<div class="source R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</h5>
+</div>
+<pre style=""><code class="source r">### Coeficiente de variação
+sd(dados$BRANCA)/mean(dados$BRANCA)</code></pre>
+</div>
+<div class="panel panel-success">
+<div class="output R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</h5>
+</div>
+<pre style=""><code class="output r">[1] 3.583896
+</code></pre>
+</div>
+</div>
+<p>Observando medidas de posição relativa - Quartís e Decís.</p>
+<div class="row">
+<div class="panel panel-primary">
+<div class="source R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</h5>
+</div>
+<pre style=""><code class="source r">### Quartís
+quantile(dados$BRANCA)</code></pre>
+</div>
+<div class="panel panel-success">
+<div class="output R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</h5>
+</div>
+<pre style=""><code class="output r">         0%         25%         50%         75%        100% 
+    11.5900    137.2385    551.8500   2366.3364 381488.0000 
+</code></pre>
+</div>
+<div class="panel panel-primary">
+<div class="source R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</h5>
+</div>
+<pre style=""><code class="source r">### Decís
+quantile(dados$BRANCA, probs = seq(0, 1, 0.1))</code></pre>
+</div>
+<div class="panel panel-success">
+<div class="output R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</h5>
+</div>
+<pre style=""><code class="output r">         0%         10%         20%         30%         40%         50% 
+    11.5900     42.9400    100.0000    200.0000    353.5700    551.8500 
+        60%         70%         80%         90%        100% 
+   929.7766   1721.8940   3204.4860  11475.4561 381488.0000 
+</code></pre>
+</div>
+</div>
+<p>Observando resumo dos dados em termos de quantificações (contagens) por fatores ou observações - Tabelas de contingência.</p>
+<div class="row">
+<div class="panel panel-primary">
+<div class="source R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</h5>
+</div>
+<pre style=""><code class="source r">### Tabela de contingência
+table(dados$FROTA)</code></pre>
+</div>
+<div class="panel panel-success">
+<div class="output R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</h5>
+</div>
+<pre style=""><code class="output r">
+    BRA BRA-ESP 
+    379     161 
+</code></pre>
+</div>
+<div class="panel panel-primary">
+<div class="source R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</h5>
+</div>
+<pre style=""><code class="source r">### Tabela de contingência cruzada
+table(dados$FROTA, dados$Trimestre)</code></pre>
+</div>
+<div class="panel panel-success">
+<div class="output R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</h5>
+</div>
+<pre style=""><code class="output r">         
+            1   2   3   4
+  BRA      80  95  98 106
+  BRA-ESP  18  33  39  71
+</code></pre>
+</div>
+<div class="panel panel-primary">
+<div class="source R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</h5>
+</div>
+<pre style=""><code class="source r">table(dados$ANO, dados$MES)</code></pre>
+</div>
+<div class="panel panel-success">
+<div class="output R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</h5>
+</div>
+<pre style=""><code class="output r">      
+        1  2  3  4  5  6  7  8  9 10 11 12
+  1998  6  7  2  5  5  6  7  6  5 10 14  9
+  1999  3  9  8  8  8  9  5 10 10 11 10  7
+  2000  3  4  4  2  5  7 12  4  4  5  7  8
+  2001  6  7  4  7  9  7  6  1  4  7  9  4
+  2002  3  5 12  6  3  5  4  5  6  3  5  4
+  2003  5  2  1  5  6  6  5  7 10  8 16 10
+  2004  2  4  1  6  7  6  8  7 11 10 10 10
+</code></pre>
+</div>
+</div>
+<p>Transformando tabelas de contingências em observações gráficas.</p>
+<div class="row">
+<div class="panel panel-primary">
+<div class="source R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</h5>
+</div>
+<pre style=""><code class="source r">barplot(table(dados$Trimestre, dados$ANO), beside = T)</code></pre>
+</div>
+<div class="row">
+<div class="col-md-offset-3 col-md-6">
+<a href="#" class="thumbnail"><img src="data:image/png;base64,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" alt="" /> </a>
+</div>
+</div>
+<div class="panel panel-primary">
+<div class="source R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</h5>
+</div>
+<pre style=""><code class="source r">mosaicplot(table(dados$Trimestre, dados$ANO))</code></pre>
+</div>
+<div class="row">
+<div class="col-md-offset-3 col-md-6">
+<a href="#" class="thumbnail"><img src="data:image/png;base64,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" alt="" /> </a>
+</div>
+</div>
+<div class="panel panel-primary">
+<div class="source R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</h5>
+</div>
+<pre style=""><code class="source r">table(dados$ANO, dados$Trimestre, dados$FROTA)</code></pre>
+</div>
+<div class="panel panel-success">
+<div class="output R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R output
+</h5>
+</div>
+<pre style=""><code class="output r">, ,  = BRA
+
+      
+        1  2  3  4
+  1998 14 13 15 25
+  1999 15 19 16 20
+  2000 11 10 12 12
+  2001 13  7  2  4
+  2002 17 12 11  9
+  2003  5 17 22 22
+  2004  5 17 20 14
+
+, ,  = BRA-ESP
+
+      
+        1  2  3  4
+  1998  1  3  3  8
+  1999  5  6  9  8
+  2000  0  4  8  8
+  2001  4 16  9 16
+  2002  3  2  4  3
+  2003  3  0  0 12
+  2004  2  2  6 16
+</code></pre>
+</div>
+<div class="panel panel-primary">
+<div class="source R panel-heading toggle">
+<h5 class="panel-title">
+<span class="glyphicon glyphicon-chevron-down"></span> R source
+</h5>
+</div>
+<pre style=""><code class="source r">mosaicplot(table(dados$ANO, dados$Trimestre, dados$FROTA))</code></pre>
+</div>
+<div class="row">
+<div class="col-md-offset-3 col-md-6">
+<a href="#" class="thumbnail"><img src="data:image/png;base64,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" alt="" /> </a>
+</div>
+</div>
+</div>
+<!-- ```{r} -->
+<!-- ## Uma forma mais eficiente - usando lattice -->
+<!-- require(lattice) # para carregar o pacote -->
+<!-- histogram(~BRANCA | FROTA, data = dados, as.table = TRUE, -->
+<!--           layout = c(1,2)) -->
+<!-- histogram(~BRANCA | factor(ANO) + factor(Trimestre), data = dados, -->
+<!--           as.table = TRUE) -->
+<!-- histogram(~BRANCA | factor(Trimestre) + factor(ANO), data = dados, -->
+<!--           as.table = TRUE) -->
+<!-- histogram(~BRANCA | factor(ANO) + FROTA, data = dados, -->
+<!--           as.table = TRUE) -->
+<!-- histogram(~BRANCA | factor(Trimestre) + FROTA, data = dados, -->
+<!--           as.table = TRUE) -->
+<!-- histogram(~BRANCA | factor(Trimestre) + factor(ANO) + FROTA, -->
+<!--           data = dados, as.table = TRUE) -->
+<!-- ``` -->
+<!-- *** -->
 </div>
 </div>
 <div class="navbar navbar-fixed-bottom navbar-inverse">
